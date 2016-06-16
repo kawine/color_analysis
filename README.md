@@ -5,38 +5,33 @@ This project is an analysis of color in 19th century literature, done in concert
 
 ### File List:
 
-color_analysis.py 
+<dl>
+  <dt>color_analysis.py</dt>
+  <dd>- Run main method to build the databases. This takes a long time and is currently spread over 22 threads. Run merge_databases() to merge the newly created databases into a single one called color_analysis_merged.db</dd>
 
-	- Run main method to build the databases. This takes a long time and is currently spread over 22 threads. Run merge_databases() to merge the newly created databases into a single one called color_analysis_merged.db
+  <dt>storage.py</dt>
+  <dd>Contains methods for insertion into the smaller databases (one for each thread).</dd>
 
-storage.py
+  <dt>sentence.py</dt>
+  <dd>Extracts the salient features from each sentence.</dd>
 
-	- Contains methods for insertion into the smaller databases (one for each thread). 
+  <dt>book.py</dt>
+  <dd>Processing an entire book. Contains preprocessing methods and the parse_book method for parsing an entire book.</dd>
 
-sentence.py
+  <dt>metadata.p</dt>
+  <dd>A pickled dictionary with the metadata (i.e. title, author, and year published) for each book. Indexed by file names ending in _tokenized.txt.</dd>
 
-	- Extracts the salient features from each sentence.
+  <dt>extended_colors.csv</dt>
+  <dd>List of all valid colors and relevant properties. Colors may be added to the program's internal list ad hoc, but such bootstrapped colors are not then added to this csv file, which was manually prepared.</dd>
 
-book.py
-
-	- Processing an entire book. Contains preprocessing methods and the parse_book method for parsing an entire book.
-
-metadata.p
-
-	- A pickled dictionary with the metadata (i.e. title, author, and year published) for each book. Indexed by file names ending in _tokenized.txt.
-
-extended_colors.csv
-
-	- List of all valid colors and relevant properties. Colors may be added to the program's internal list ad hoc, but such bootstrapped colors are not then added to this csv file, which was manually prepared.
-
-schema.txt
-
-	- Schema for the database. For more info, see storage.py
+  <dt>schema.txt</dt>
+  <dd>Schema for the database. For more info, see storage.py</dd>
+</dl>
 
 
 ### To be added:
 
-color_analysis_merged.db
-
-	- The database with all the relevant data (called 'merged' because the processing is multi-threaded, and so many databases are merged to form this one). Schema can be found in schema.txt.
-
+<dl>
+  <dt>color_analysis_merged.db</dt>
+  <dd>The database with all the relevant data (called 'merged' because the processing is multi-threaded, and so many databases are merged to form this one). Schema can be found in schema.txt.</dd>
+</dl
