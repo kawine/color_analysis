@@ -1,6 +1,6 @@
 # Color Analysis
 
-This project is an analysis of color in 19th century literature, done in concert with the Literary Lab at Stanford University.
+This project is an analysis of color in 19th century literature, done in concert with the Literary Lab at Stanford University. Please contact Irena Yamboliev (firstname[at]stanford.edu) or Kawin Ethayarajh ([firstname][at]cs.toronto.edu) if you'd like to contribute.
 
 
 ### File List:
