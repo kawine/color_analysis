@@ -226,7 +226,7 @@ def get_color_id(color, cursor):
 		if color.startswith(mod):
 			command = """SELECT id FROM color WHERE modifier LIKE '{m}' AND name LIKE '{n}';"""
 			# Separate colors into the modifier and base name when searching the table.
-			cursor.execute(command.format(m=mod[:-1], n=color[len(mod):]))
+			cursor.execute(command.format(m=(mod[:-1] if mod else mod), n=color[len(mod):]))
 			result = cursor.fetchone()
 
 			if result is not None:
