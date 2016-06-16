@@ -1,0 +1,114 @@
+TABLE color ( 
+	id INTEGER PRIMARY KEY,								
+	name VARCHAR(20),			# root name of the color, so the full color name minus any modifier (e.g. 'pink' for 'dark pink')
+	modifier VARCHAR(6),		# either 'bright', 'dark', 'light', 'pastel', 'pale', 'deep', 'pure', or '' (empty string, denoting no modifier)
+								# note that 'milky-white', for example, has an empty modifier; modifiers can only be one of the eight above
+	base VARCHAR(10), 			# base color (e.g. 'red' for crimson, 'yellow' for gold)
+	complexity VARCHAR(10),		# either 'elaborate' (e.g. 'crimson') or 'basic' (e.g. 'red')
+	kind VARCHAR(20),			# either 'object-sensitive' (e.g. coffee-colored), 'abstract' (e.g. brown), or 'concrete' (e.g. chocolate)
+	object BOOLEAN,				# can the color be an object? (e.g. chocolate can be an object; red cannot)
+								# note that this corresponds to the 'kind' feature above; concrete colors can be objects but others cannot
+	UNIQUE(name, modifier)))	# root name + modifier must constitute a unique color
+
+
+TABLE book ( 							
+	id INTEGER PRIMARY KEY AUTOINCREMENT,	
+	title VARCHAR(255),						# book title
+	author VARCHAR(255),					# book author
+	year INTEGER))							# book year (should be between 1800-1899, inclusive)
+
+
+TABLE sentence ( 
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	text VARCHAR(1500),						# for sentences that contains 1+ colors, we include the full text (at Irena's request)
+	book INTEGER REFERENCES book(id),		# book containing sentence
+	index_in_book INTEGER,					# index of sentence in book (0-indexed, so 1st sentence has index 0)
+	length INTEGER,							# number of words in sentence
+	height INTEGER, 						# height of the parse tree of the sentence
+	periodicity INTEGER,					# periodicity of a sentence (i.e. index of the main verb in the sentence)
+	num_dep INTEGER,						# number of dependent clauses
+	num_indep INTEGER,						# number of independent clauses
+	vocab_richness FLOAT,					# richness of vocabulary (see sentence.py for how this is calculated)
+	S INTEGER, 								# parts-of-speech tags hereafter (see http://web.mit.edu/6.863/www/PennTreebankTags.html)
+	SBAR INTEGER,
+	SBARQ INTEGER,
+	SINV INTEGER,
+	SQ INTEGER,
+	ADJP INTEGER,
+	ADVP INTEGER,
+	CONJP INTEGER,
+	FRAG INTEGER,
+	INTJ INTEGER,
+	LST INTEGER,
+	NAC INTEGER,
+	NP INTEGER,
+	NX INTEGER,
+	PP INTEGER,
+	PRN INTEGER,
+	PRT INTEGER,
+	QP INTEGER,
+	RRC INTEGER,
+	UCP INTEGER,
+	VP INTEGER,
+	WHADJP INTEGER,
+	WHAVP INTEGER,
+	WHNP INTEGER,
+	WHPP INTEGER,
+	X INTEGER,
+	CC INTEGER,
+	CD INTEGER,
+	DT INTEGER,
+	EX INTEGER,
+	FW INTEGER,
+	PREPOSITION INTEGER,
+	JJ INTEGER,
+	JJR INTEGER,
+	JJS INTEGER,
+	LS INTEGER,
+	MD INTEGER,
+	NN INTEGER,
+	NNS INTEGER,
+	NNP INTEGER,
+	NNPS INTEGER,
+	PDT INTEGER,
+	POS INTEGER,
+	PRP INTEGER,
+	PRP$ INTEGER,
+	RB INTEGER,
+	RBR INTEGER,
+	RBS INTEGER,
+	RP INTEGER,
+	SYM INTEGER,
+	UH INTEGER,
+	VB INTEGER,
+	VBD INTEGER,
+	VBG INTEGER,
+	VBN INTEGER,
+	VBP INTEGER,
+	VBZ INTEGER,
+	WDT INTEGER,
+	WP INTEGER,
+	WP$ INTEGER,
+	WRB INTEGER))
+
+
+TABLE clause ( 
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	sentence INTEGER REFERENCES sentence(id),	# id of the sentence to which the clause belongs
+	dependency_state VARCHAR(3),				# type of clause (either 'independent', 'dependent', or 'fragment')
+	length INTEGER,								# number of words in clause
+	height INTEGER)								# height of the parse tree of the clause
+
+	
+TABLE mention ( 								# mentions of colors
+	id INTEGER PRIMARY KEY AUTOINCREMENT,			
+	index_in_sent INTEGER,						# index of the color in the sentence
+	clause INTEGER REFERENCES clause(id),		# id of the the clause to which the mention belongs
+	color INTEGER REFERENCES color(id),			# the id of the color referenced
+	type VARCHAR(4))							# either 'attr' (attributive), 'pred' (predicative), 'noun' (noun), 'verb' (verb)
+													# These describe the four possible ways in which colors can appear:
+													# 	as predicative adjectives, connected to the noun with a verb (e.g. The vase was red.)
+													# 	as attributive adjectives, which directly modfiy the noun (e.g. The red vase ...)
+													# 	as nouns (e.g. The dress was a bright red.)
+													# 	as verbs (e.g. He whitened his teeth.)
+

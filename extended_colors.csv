@@ -1,0 +1,259 @@
+Name,Base color,Basic/Elaborate,"Kind of term (abstract [hue: red, purple, black], object-sensitive (adjectives that compare to an object) [rosy, silvery, tawny, pearly, ruddy], concrete (could be noun or verb, that serves as color name and adjective [amber, orange, olive, ruby])",Could be an object?
+agate,brown,elaborate,concrete,y
+alabaster,white,elaborate,concrete,y
+amaranth,red,elaborate,concrete,y
+amber,yellow,elaborate,concrete,y
+amethyst,purple,elaborate,concrete,y
+amethystine,purple,elaborate,abstract,
+apricot,orange,elaborate,concrete,y
+aqua,blue,elaborate,abstract,
+aquamarine,blue,elaborate,abstract,
+argent,gray,elaborate,concrete,y
+aubergine,purple,elaborate,concrete,y
+auburn,brown,elaborate,abstract,
+aureate,yellow,elaborate,object-sensitive,
+azure,blue,elaborate,abstract,
+beige,yellow,elaborate,abstract,
+beryl,green,elaborate,concrete,y
+black,black,basic,abstract,
+black-and-blue,black,elaborate,abstract,
+black-and-white,black,elaborate,abstract,
+blackish,black,elaborate,abstract,
+blacken,black,elaborate,abstract,
+blackest,black,elaborate,abstract,
+blacker,black,elaborate,abstract,
+blood red,red,elaborate,object-sensitive,
+blue,blue,basic,abstract,
+blue green,blue,elaborate,abstract,
+bluish,blue,elaborate,abstract,
+bluest,blue,elaborate,abstract,
+bluer,blue,elaborate,abstract,
+bluish green,blue,elaborate,abstract,
+bone,white,elaborate,concrete,y
+bordeaux,red,elaborate,concrete,y
+bottle green,green,elaborate,object-sensitive,
+brick,red,elaborate,concrete,y
+brick-dust,red,elaborate,concrete,
+bronze,brown,elaborate,concrete,y
+brown,brown,basic,abstract,
+browny,brown,elaborate,abstract,
+brownish,brown,elaborate,abstract,
+brownest,brown,elaborate,abstract,
+browner,brown,elaborate,abstract,
+burgundy,purple,elaborate,concrete,y
+burnt sienna,red,elaborate,concrete,
+burnt umber,brown,elaborate,concrete,
+cadmium orange,orange,elaborate,abstract,
+cadmium yellow,yellow,elaborate,abstract,
+canary,yellow,elaborate,concrete,y
+caramel,brown,elaborate,concrete,y
+carmine,red,elaborate,abstract,
+celadon green,green,elaborate,abstract,
+cerise,red,elaborate,abstract,
+cerulean,blue,elaborate,abstract,
+chalcedony,green,elaborate,concrete,y
+chalky-white,white,elaborate,object-sensitive,
+charcoal,gray,elaborate,concrete,y
+charcoal-gray,gray,elaborate,object-sensitive,
+chartreuse,green,elaborate,abstract,
+cherry,red,elaborate,concrete,y
+cherry red,red,elaborate,object-sensitive,
+chestnut,brown,elaborate,concrete,y
+chlor,green,elaborate,abstract,
+chocolate,brown,elaborate,concrete,y
+cinnabar,red,elaborate,abstract,
+cinnamon,red,elaborate,concrete,y
+citron-green,green,elaborate,abstract,
+claret,red,elaborate,concrete,
+coal-black,black,elaborate,object-sensitive,
+cobalt,blue,elaborate,concrete,
+copper,brown,elaborate,concrete,
+copper-green,green,elaborate,object-sensitive,
+coral,red,elaborate,concrete,y
+cream,white,elaborate,object-sensitive,y
+cress-green,green,elaborate,object-sensitive,
+crimson,red,elaborate,abstract,
+crystal-white,white,elaborate,object-sensitive,
+cyan,blue,elaborate,abstract,
+delft blue,blue,elaborate,abstract,
+dun,gray,elaborate,abstract,
+ebony,black,elaborate,concrete,y
+ecru,white,elaborate,abstract,
+eggshell,white,elaborate,concrete,y
+emerald ,green,elaborate,concrete,y
+fawn,brown,elaborate,concrete,y
+flame-red,red,elaborate,concrete,
+flaxen,yellow,elaborate,object-sensitive,
+foxy red,red,elaborate,object-sensitive,
+fuschia,pink,elaborate,concrete,y
+garnet,red,elaborate,concrete,y
+gilded,yellow,elaborate,object-sensitive,
+gilt,yellow,elaborate,object-sensitive,
+ginger,red,elaborate,abstract,
+gold,yellow,elaborate,concrete,y
+golden,yellow,elaborate,object-sensitive,
+golden-yellow,yellow,elaborate,abstract,
+grass green,green,elaborate,object-sensitive,
+gray,gray,basic,abstract,
+grayish,gray,elaborate,abstract,
+grayest,gray,elaborate,abstract,
+grayer,gray,elaborate,abstract,
+green,green,basic,abstract,
+green-baize,green,elaborate,concrete,
+greenest,green,elaborate,abstract,
+greener,green,elaborate,abstract,
+greenish,green,elaborate,abstract,
+greeny,green,elaborate,abstract,
+greenish-blue,blue,elaborate,abstract,
+gunmental,gray,elaborate,object-sensitive,
+hazel,green,elaborate,concrete,
+heliotrope,blue,elaborate,concrete,y
+henna,brown,elaborate,concrete,y
+honey,yellow,elaborate,concrete,y
+hyacinth,blue,elaborate,concrete,y
+incarnadine,red,elaborate,abstract,
+Indian red,red,elaborate,abstract,
+indigo,blue,elaborate,abstract,
+ink-black,black,elaborate,object-sensitive,
+iris,purple,elaborate,concrete,y
+ivory,white,elaborate,concrete,y
+ivory-white,white,elaborate,concrete,
+jade,green,elaborate,concrete,y
+jade-green,green,elaborate,object-sensitive,
+jet,black,elaborate,concrete,y
+jet black,black,elaborate,object-sensitive,
+khaki,brown,elaborate,abstract,
+laburnum,yellow,elaborate,concrete,y
+lapiz,blue,elaborate,concrete,y
+lavender,purple,elaborate,concrete,y
+lazure,blue,elaborate,abstract,
+lemon,yellow,elaborate,concrete,y
+lilac,purple,elaborate,concrete,y
+lily-white,white,elaborate,object-sensitive,
+lime,green,elaborate,concrete,y
+livid,blue,elaborate,object-sensitive,
+madder,red,elaborate,concrete,y
+magenta,purple,elaborate,abstract,
+mahogany,brown,elaborate,concrete,y
+malachite,green,elaborate,concrete,y
+marigold,yellow,elaborate,concrete,y
+maroon,red,elaborate,abstract,
+mauve,purple,elaborate,abstract,
+milk-white,white,elaborate,object-sensitive,
+milky,white,elaborate,object-sensitive,
+mocha,brown,elaborate,concrete,y
+moon white,white,elaborate,object-sensitive,
+moss-green,green,elaborate,object-sensitive,
+mummy,brown,elaborate,concrete,y
+mustard,yellow,elaborate,concrete,y
+nacre,white,elaborate,concrete,y
+navy,blue,elaborate,abstract,
+ochre,brown,elaborate,concrete,
+olive,green,elaborate,concrete,y
+olive-green,green,elaborate,object-sensitive,y
+olive-brown,brown,elaborate,object-sensitive,y
+opal,white,elaborate,concrete,y
+orange,orange,basic,concrete,y
+orangey,orange,elaborate,abstract,
+oranger,orange,elaborate,abstract,
+orangest,orange,elaborate,abstract,
+orangish,orange,elaborate,abstract,
+orchid,purple,elaborate,concrete,y
+oxblood-red,red,elaborate,object-sensitive,
+peach,orange,elaborate,concrete,y
+peacock,green,elaborate,concrete,y
+pea-green,green,elaborate,object-sensitive,
+pearl,white,elaborate,concrete,y
+pearl gray,gray,elaborate,object-sensitive,
+pearly,white,elaborate,object-sensitive,
+pearly-white,white,elaborate,object-sensitive,
+pink,pink,basic,abstract,
+pinker,pink,elaborate,abstract,
+pinkest,pink,elaborate,abstract,
+pinkish,pink,elaborate,abstract,
+pistache,green,elaborate,concrete,
+pistachio,green,elaborate,concrete,y
+platinum,white,elaborate,concrete,y
+plum,purple,elaborate,concrete,y
+poppy red,red,elaborate,object-sensitive,
+powder blue,blue,elaborate,abstract,
+primrose-yellow,yellow,elaborate,object-sensitive,y
+Prussian blue,blue,elaborate,abstract,
+puce,purple,elaborate,abstract,
+purple,purple,basic,abstract,
+purpler,purple,basic,abstract,
+purplest,purple,basic,abstract,
+purplish,purple,basic,abstract,
+purply,purple,basic,abstract,
+red,red,basic,abstract,
+red brown,brown,elaborate,abstract,
+redden,red,elaborate,abstract,
+redder,red,elaborate,abstract,
+reddest,red,elaborate,abstract,
+reddish,red,elaborate,abstract,
+reddy,red,elaborate,abstract,
+red-gold,yellow,elaborate,object-sensitive,
+rose,pink,elaborate,concrete,y
+roseate,red,elaborate,abstract,
+rose-pink,pink,elaborate,object-sensitive,
+rose-red,red,elaborate,object-sensitive,
+rosy,red,elaborate,object-sensitive,
+rouge,red,elaborate,concrete,y
+rubicund,red,elaborate,concrete,
+ruby,red,elaborate,concrete,y
+ruddy,red,elaborate,object-sensitive,
+russet,red,elaborate,abstract,
+rust,red,elaborate,concrete,y
+saffron,yellow,elaborate,concrete,y
+salmon,orange,elaborate,concrete,y
+sanguine,red,elaborate,abstract,
+sapphire,blue,elaborate,concrete,y
+scarlet,red,elaborate,abstract,
+sea blue,blue,elaborate,object-sensitive,
+sea green,green,elaborate,object-sensitive,
+seashell,white,elaborate,concrete,y
+sepia,brown,elaborate,abstract,
+shadow,gray,elaborate,concrete,y
+sienna,brown,elaborate,concrete,
+silver,gray,elaborate,concrete,y
+silvery,white,elaborate,object-sensitive,
+slate-gray,gray,elaborate,object-sensitive,
+sky-blue,blue,elaborate,object-sensitive,
+snail green,green,elaborate,object-sensitive,
+snow white,white,elaborate,object-sensitive,
+soot black,black,elaborate,object-sensitive,
+steel blue,blue,elaborate,object-sensitive,
+strawberry,red,elaborate,concrete,y
+sulphur-yellow,yellow,elaborate,object-sensitive,
+tan,brown,elaborate,abstract,
+tangerine,orange,elaborate,concrete,y
+taupe,brown,elaborate,abstract,
+tawny,brown,elaborate,object-sensitive,
+teal,green,elaborate,abstract,
+terra cotta,brown,elaborate,concrete,y
+topaz,yellow,elaborate,concrete,y
+turquoise,blue,elaborate,concrete,y
+turquoise-blue,blue,elaborate,object-sensitive,
+Tyrian-purple,purple,elaborate,abstract,
+ultramarine,blue,elaborate,abstract,
+umber,brown,elaborate,concrete,
+Vandyke-brown,brown,elaborate,abstract,
+vanilla,white,elaborate,concrete,y
+Venetian-red,red,elaborate,abstract,
+verdigris,green,elaborate,concrete,y
+vermilion,red,elaborate,abstract,
+violet,purple,elaborate,abstract,y
+viridian,green,elaborate,abstract,
+wheat,yellow,elaborate,concrete,y
+white,white,basic,abstract,
+whiten,white,elaborate,abstract,
+whiter,white,elaborate,abstract,
+whitest,white,elaborate,abstract,
+whitish,white,elaborate,abstract,
+wine-yellow,yellow,elaborate,concrete,
+yellow,yellow,basic,abstract,
+yellower,yellow,elaborate,abstract,
+yellowest,yellow,elaborate,abstract,
+yellowish,yellow,elaborate,abstract,
+yellowy,yellow,elaborate,abstract,
+yellowish green,green,elaborate,abstract,
