@@ -34,4 +34,4 @@ This project is an analysis of color in 19th century literature, done in concert
 <dl>
   <dt>color_analysis_merged.db</dt>
   <dd>The database with all the relevant data (called 'merged' because the processing is multi-threaded, and so many databases are merged to form this one). Schema can be found in schema.txt.</dd>
-</dl
+</dl>
