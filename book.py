@@ -184,6 +184,9 @@ def get_sentences(book_name, color_list):
 				parenth_replacements = { '(' : '-LRB-', ')' : '-RRB-'  }
 				token = parenth_replacements.get(token, token)
 
+				# if there are other parentheses, remove them
+				token = re.sub(r'[\(\)\[\]\{\}]', '', token)
+
 				token = token.replace("-and-", "_and_")	# underscores will be split on later (handles cases like 'red-and-purple')
 
 				# for colors or things that share a name with a color
@@ -250,7 +253,7 @@ def parse_book(book_name, color_list, database_index):
 	# next(reader)
 
 	conn = storage.new_connection(database_index)
-	title, author, year = get_metadata(book_name)
+	title, author, year = ('Test', 'Irena', 1894) # get_metadata(book_name)
 	book_id = storage.add_book(title, author, year, conn)
 	text = get_sentences(book_name, color_list)
 	

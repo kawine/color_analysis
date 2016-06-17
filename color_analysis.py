@@ -104,11 +104,11 @@ def tokenize_books(indices):
 
 def test_run():
 	color_list, to_store = get_color_list('extended_colors.csv')
-	conn = storage.new_connection()
+	conn = storage.new_connection('sample')
 	storage.create_tables(conn)
 	storage.add_colors(to_store, conn)
 	conn.close()
-	parse_book('test_sentences_tagged.txt', color_list)
+	parse_book('test_sentences_tagged.txt', color_list, 'sample')
 
 
 def build_database((database_index, fns)):

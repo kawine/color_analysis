@@ -26,6 +26,15 @@ This project is an analysis of color in 19th century literature, done in concert
 
   <dt>schema.txt</dt>
   <dd>Schema for the database. For more info, see storage.py</dd>
+
+  <dt>test_sentences_tokenized.txt</dt>
+  <dd>Test sentences, tokenized, one per line. Most have colors.</dd>
+  
+  <dt>test_sentences_tagged.txt</dt>
+  <dd>The test_sentences_tokenized.txt file after it has gone through the Senna tagger.</dd>
+
+  <dt>color_analysis_sample.db</dt>
+  <dd>A sample database created using the sentences in test_sentences_tokenized.txt and test_sentences_tagged.txt.</dd>
 </dl>
 
 

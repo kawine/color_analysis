@@ -44,7 +44,7 @@ def get_pos(t, include_punc):
 	if include_punc is set to True.
 	"""
 	punctuation = [] if include_punc else punc_tags
-	pos_trees = list(t.subtrees(filter = lambda st: (not isinstance(st[0], Tree)) and (not st.label() in punctuation)))
+	pos_trees = list(t.subtrees(filter = lambda st: (len(st) > 0) and (not isinstance(st[0], Tree)) and (not st.label() in punctuation)))
 	# no need to lowercase words since that should have been done in pre-processing
 	pos_and_positions = [ [pos_tree.label(), pos_tree[0]] for pos_tree in pos_trees ]
 	# the pre-order positions for the leaves (leave out punctuation if necessary)
