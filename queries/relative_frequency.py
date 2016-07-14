@@ -20,14 +20,50 @@ def get_freqs():
 
     return relative_freq
 
-def get_freqs_over_years(threshold, period):
+def get_freqs_over_period(period):
+    """
+    Get a list of (color_id, color_name, period, absolute_freq, relative_freq) tuples
+    """
+    absolute_freq_query = """SELECT color.id, color.name, book.year / {p} * {p}, count(*) as frequency
+        FROM mention
+        JOIN color ON mention.color = color.id
+        JOIN clause ON mention.clause = clause.id
+        JOIN sentence ON clause.sentence = sentence.id
+        JOIN book ON sentence.book = book.id
+        GROUP BY book.year / {p} * {p}, mention.color;""".format(p=period)
+
+    # List of (color_id, color_name, period, abs_freq) tuples
+    absolute_freq = list(c.execute(absolute_freq_query))
+
+    # List of (period, length) tuples
+    lengths_query = """SELECT book.year / {p} * {p}, SUM(sentence.length)
+        FROM sentence JOIN book ON sentence.book = book.id
+        GROUP BY book.year / {p} * {p};""".format(p=period)
+    lengths = list(c.execute(lengths_query))
+
+    # {Period: total length} mapping
+    period_to_length = dict()
+    for tup in lengths:
+        period_to_length[tup[0]] = tup[1]
+
+    print period_to_length[1890]
+
+    # List of (color_id, color_name, period, abs_freq, rel_freq) tuples
+    relative_freq = []
+    for item in absolute_freq:
+        rel_freq = float(item[3])/period_to_length[item[2]] * 10000
+        relative_freq.append((item[0], item[1], item[2], item[3], rel_freq))
+
+    return relative_freq
+
+def get_frequent_colors(threshold, period):
     """
     Get a dictionary in the form
     {(color_id, color_name):
         {   periods_above_threshold: [ list of periods ],
             always_above_threshold: true/false }, ...}
     """
-    absolute_freq_query = """SELECT color.id, color.name, book.year / {p} * {p}, count(*) as frequency
+    absolute_freq_query = """SELECT color.id, color.name, book.year / {p} * {p}, count(*)
         FROM mention
         JOIN color ON mention.color = color.id
         JOIN clause ON mention.clause = clause.id
@@ -78,10 +114,10 @@ def show(data, period):
 
 if __name__ == '__main__':
 
-    conn = sqlite3.connect('../color_analysis_merged.db')
+    conn = sqlite3.connect('../color_analysis_sample.db')
     c = conn.cursor()
 
-    print get_freqs_over_years(3, 5)
+    print get_freqs_over_period(10)
 
     # relative_freq = get_freqs()
     # show(relative_freq, '1990-1995')
