@@ -2,6 +2,7 @@ import sqlite3
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+import collections
 
 def get_freqs():
     absolute_freq_query = """SELECT name, count(*) as frequency
@@ -46,8 +47,6 @@ def get_freqs_over_period(period):
     for tup in lengths:
         period_to_length[tup[0]] = tup[1]
 
-    print period_to_length[1890]
-
     # List of (color_id, color_name, period, abs_freq, rel_freq) tuples
     relative_freq = []
     for item in absolute_freq:
@@ -86,7 +85,7 @@ def get_frequent_colors(threshold, period):
         period_to_length[tup[0]] = tup[1]
 
     # {(color_id, color_name): {'periods_above_threshold': lst, 'always_above_threshold': bool}}
-    relative_freq = {}
+    relative_freq = collections.OrderedDict()
     for item in absolute_freq:
         key = (item[0], item[1])  # (color_id, color_name) tuple
         period = item[2]
@@ -99,6 +98,32 @@ def get_frequent_colors(threshold, period):
             relative_freq[key]['always_above_threshold'] = False
 
     return relative_freq
+
+def get_colors_above_threshold(threshold, period):
+    """
+    Get a list of color ids that are always above the given threshold
+    """
+    freq_data = get_frequent_colors(threshold, period)
+
+    above_threshold = []
+    for key in freq_data:
+        if freq_data[key]['always_above_threshold']:
+            above_threshold.append(key[0])
+
+    return above_threshold
+
+def get_colors_not_above_threshold(threshold, period):
+    """
+    Get a list of colors ids that are not always above the given threshold
+    """
+    freq_data = get_frequent_colors(threshold, period)
+
+    not_above_threshold = []
+    for key in freq_data:
+        if not freq_data[key]['always_above_threshold']:
+            not_above_threshold.append(key[0])
+
+    return not_above_threshold
 
 def show(data, period):
 
@@ -114,7 +139,7 @@ def show(data, period):
 
 if __name__ == '__main__':
 
-    conn = sqlite3.connect('../color_analysis_merged.db')
+    conn = sqlite3.connect('../color_analysis_sample.db')
     c = conn.cursor()
 
 #    relative_freq = get_freqs()
@@ -122,7 +147,8 @@ if __name__ == '__main__':
 #    print(relative_freq)
     #show(relative_freq, '1990-1995')
 
-    print get_freqs_over_period(10)
+    print get_colors_above_threshold(3, 10)
+    print get_colors_not_above_threshold(3, 10)
 
     # relative_freq = get_freqs()
     # show(relative_freq, '1990-1995')
