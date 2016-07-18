@@ -1,24 +1,23 @@
 import sqlite3
 
 def get_empty_col():
-    query = """SELECT * FROM color
-    WHERE base is NULL
-    OR name is NULL
-    OR complexity is NULL
-    OR kind is NULL
-    OR object is NULL;"""
+    res_file = open('empty_cols.txt', 'w+')
+    query = """SELECT distinct * FROM color
+    WHERE base is 'NULL'
+    OR modifier is 'NULL'
+    OR name is 'NULL'
+    OR complexity is 'NULL'
+    OR kind is 'NULL'
+    OR object is 'NULL';"""
 
     res = c.execute(query)
 
     for row in res:
-        print(row)
-    
-    
+        res_file.write(str(row))
+        res_file.write('\n')
 
-def fill_empty_col(c):
-    return 0
+    res_file.close()
     
-
 
 if __name__ == '__main__':
 
