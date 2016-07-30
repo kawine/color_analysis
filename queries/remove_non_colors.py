@@ -29,7 +29,7 @@ def parse_color_list():
     return res
 
 def filter_noncolors(c):
-    f = open('deleted.txt', 'w+');
+    f = open('filtered.txt', 'w+');
     all_colors = query("""SELECT name, id FROM color WHERE modifier=''""", '', c, '')
     all_colors = c.fetchall()
 
@@ -46,7 +46,7 @@ def filter_noncolors(c):
             x_y = split[0] in manually_set_colors and split[1] in manually_set_colors
         
         if not(is_manually_set or x_colored or x_y):
-            f.write(str(row) + '\n')
+            f.write(str(row[1]) + ',' + str(row[0]) + ',,'  + '\n')
 ##            query("""DELETE FROM color WHERE id=?""", [row[1]], c, '')
 
 
@@ -71,14 +71,64 @@ def remove_modifier(c):
         new_name = row[0][row[0].find(' ') + 1:]
         query("""UPDATE color SET name=? WHERE id=?""", [new_name, row[1]], c, '')
 
+def remove_n_words(c, filename):
 
+    with open(filename, 'r') as f:
+        for row in f:
+            row = row.split(',')
+            if (row[2] == 'n' and row[3] == '' and row[4] == ''):
+                c.execute("""DELETE from color WHERE name like ?""", [row[1]]); 
+                    
+
+    r = open('non_n_words.txt', 'w+')
+    for row in c.execute("SELECT distinct name FROM color"):
+        r.write(row[0] + '\n')
+    r.close()
+
+
+def fix_typos(c, filename, color_list):
+    with open(filename, 'r') as f:
+        for row in f:
+            row = row.split(',')
+            if ((row[2] == 'n' or row[2] == 'c') and row[3] != ''):
+                c.execute("""SELECT * FROM color WHERE name=?""", [row[3]]); 
+                if not list(c.fetchall()):
+                    c.execute("""UPDATE color SET name=? WHERE name like ?""", [row[3], row[1]])
+                else:
+                    for row2 in c.execute("""SELECT mention.id, modifier FROM mention, color WHERE mention.color=color.id AND color.id IN (SELECT id FROM color WHERE name like ?)""", [row[1]]):
+                        c.execute("""SELECT name, id FROM color WHERE name like ? AND modifier like ?""", [row[3], row2[1]])
+                        new_color_id = c.fetchone()
+                        print(row[1] + " " + new_color_id[0])
+                        c.execute("""UPDATE mention SET color=? WHERE id=?""", [new_color_id[1],row2[0]])
+                    
+
+    r = open('non_typo_words.txt', 'w+')
+    for row in c.execute("SELECT distinct name FROM color"):
+        r.write(row[0] + '\n')
+    r.close()    
+
+def parse_color_list(filename):
+    result = [];
+    
+    with open(filename, 'r') as f:
+        for row in f:
+            row = row.split(',')
+            result.append(row[0])
+
+    return result
+            
 if __name__ == '__main__':
 
     conn = sqlite3.connect('../color_analysis_merged.db')
     c = conn.cursor()
+    
+    color_list = parse_color_list('../extended_colors.csv');
+
+    remove_n_words(c, '../christina.csv');
+    fix_typos(c, '../christina.csv', color_list);
 
  #   remove_modifier(c)
-    delete_noncolors(c)
+ #   filter_noncolors(c)
 
     # uncomment to save DB updates
     # conn.commit()
