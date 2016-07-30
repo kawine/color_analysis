@@ -77,7 +77,7 @@ def remove_n_words(c, filename):
         for row in f:
             row = row.split(',')
             if (row[2] == 'n' and row[3] == '' and row[4] == ''):
-                c.execute("""DELETE from color WHERE name like ?""", [row[1]]); 
+                c.execute("""DELETE FROM color WHERE name like ?""", [row[1]]); 
                     
 
     r = open('non_n_words.txt', 'w+')
@@ -98,8 +98,9 @@ def fix_typos(c, filename, color_list):
                     for row2 in c.execute("""SELECT mention.id, modifier FROM mention, color WHERE mention.color=color.id AND color.id IN (SELECT id FROM color WHERE name like ?)""", [row[1]]):
                         c.execute("""SELECT name, id FROM color WHERE name like ? AND modifier like ?""", [row[3], row2[1]])
                         new_color_id = c.fetchone()
-                        print(row[1] + " " + new_color_id[0])
-                        c.execute("""UPDATE mention SET color=? WHERE id=?""", [new_color_id[1],row2[0]])
+                        #print(row[1] + " " + new_color_id[0])
+                        c.execute("""UPDATE mention SET color=? WHERE id=?""", [new_color_id[1], row2[0]])
+                        c.execute("""DELETE FROM color WHERE name like ?""", [row[1]])
                     
 
     r = open('non_typo_words.txt', 'w+')
@@ -116,7 +117,27 @@ def parse_color_list(filename):
             result.append(row[0])
 
     return result
-            
+
+def get_empty_col(c):
+    res_file = open('empty_cols2.txt', 'w+')
+    query = """SELECT distinct name FROM color
+    WHERE base is 'NULL';"""
+
+    res = c.execute(query)
+
+    for row in res:
+        res_file.write(row[0])
+        res_file.write('\n')
+
+    res_file.close()
+
+def add_base(c, filename):
+    with open(filename, 'r') as f:
+        for row in f:
+            row = row.split(',')
+            if row[1] != '':
+                c.execute("""UPDATE color SET base=? WHERE name LIKE ?""", [row[1], row[0]])
+
 if __name__ == '__main__':
 
     conn = sqlite3.connect('../color_analysis_merged.db')
@@ -124,14 +145,16 @@ if __name__ == '__main__':
     
     color_list = parse_color_list('../extended_colors.csv');
 
-    remove_n_words(c, '../christina.csv');
-    fix_typos(c, '../christina.csv', color_list);
+ #   remove_n_words(c, '../christina.csv');
+#    fix_typos(c, '../christina.csv', color_list);
+#    get_empty_col()
+    add_base(c, '../empty_cols2.csv')
 
  #   remove_modifier(c)
  #   filter_noncolors(c)
 
     # uncomment to save DB updates
-    # conn.commit()
+    #conn.commit()
     
 
 
