@@ -11,7 +11,7 @@ for row in c.execute("""SELECT text FROM sentence WHERE id IN
                      (SELECT sentence FROM clause WHERE id IN
                      (SELECT clause FROM mention WHERE color IN
                      (SELECT id FROM color WHERE name IN
-                     ("hair-colored"))))"""):
+                     ("almond-white"))))"""):
     print(str(row))
      
     f.write(row[0] + '\n\n')

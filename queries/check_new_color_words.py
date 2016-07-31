@@ -90,7 +90,7 @@ def fix_typos(c, filename, color_list):
     with open(filename, 'r') as f:
         for row in f:
             row = row.split(',')
-            if ((row[2] == 'n' or row[2] == 'c') and row[3] != ''):
+            if ((row[2] == 'n') and row[3] != ''):
                 c.execute("""SELECT * FROM color WHERE name=?""", [row[3]]); 
                 if not list(c.fetchall()):
                     c.execute("""UPDATE color SET name=? WHERE name like ?""", [row[3], row[1]])
@@ -107,6 +107,24 @@ def fix_typos(c, filename, color_list):
     for row in c.execute("SELECT distinct name FROM color"):
         r.write(row[0] + '\n')
     r.close()    
+
+def fix_conditionals(c, filename):
+     with open(filename, 'r') as f:
+         for row in f:
+             row = row.split(',')
+             if ((row[2] == 'c') and row[3] != ''):
+                 for row2 in c.execute("""SELECT mention.id, modifier, text FROM mention, color, clause, sentence WHERE mention.color=color.id AND
+                 clause.id = mention.clause AND clause.sentence = sentence.id AND color.id IN (SELECT id FROM color WHERE name like ?)""", [row[1]]):
+                     split_name = row[1].split('-')  
+      #               print(split_name[0] + ' ' + split_name[1] + ':' +row2[2]);
+                     if (split_name[0] + ' ' + split_name[1]) in row2[2]:
+                            c.execute("""SELECT name, id FROM color WHERE name like ? AND modifier like ?""", [row[3], row2[1]])
+                            new_color_id = c.fetchone()
+                            print(row[1] + " " + new_color_id[0])
+                            c.execute("""UPDATE mention SET color=? WHERE id=?""", [new_color_id[1], row2[0]])
+
+                                 
+    
 
 def parse_color_list(filename):
     result = [];
@@ -148,7 +166,8 @@ if __name__ == '__main__':
  #   remove_n_words(c, '../christina.csv');
 #    fix_typos(c, '../christina.csv', color_list);
 #    get_empty_col()
-    add_base(c, '../empty_cols2.csv')
+    fix_conditionals(c, '../christina.csv')
+ #   add_base(c, '../empty_cols2.csv')
 
  #   remove_modifier(c)
  #   filter_noncolors(c)
