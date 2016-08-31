@@ -163,17 +163,17 @@ if __name__ == '__main__':
     
     color_list = parse_color_list('../extended_colors.csv');
 
- #   remove_n_words(c, '../christina.csv');
-#    fix_typos(c, '../christina.csv', color_list);
-#    get_empty_col()
+    remove_n_words(c, '../christina.csv');
+    fix_typos(c, '../christina.csv', color_list);
+    get_empty_col(c)
     fix_conditionals(c, '../christina.csv')
- #   add_base(c, '../empty_cols2.csv')
+    add_base(c, '../empty_cols2.csv')
 
  #   remove_modifier(c)
  #   filter_noncolors(c)
 
     # uncomment to save DB updates
-    #conn.commit()
+    conn.commit()
     
 
 

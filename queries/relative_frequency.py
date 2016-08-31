@@ -142,13 +142,15 @@ if __name__ == '__main__':
     conn = sqlite3.connect('../color_analysis_sample.db')
     c = conn.cursor()
 
-#    relative_freq = get_freqs()
+    data = get_frequent_colors(90, 10)
 
-#    print(relative_freq)
+    #relative_freq = get_freqs()
+
+    #print(relative_freq)
     #show(relative_freq, '1990-1995')
-
-    print get_colors_above_threshold(3, 10)
-    print get_colors_not_above_threshold(3, 10)
+##
+##    print(get_colors_above_threshold(3, 10))
+##    print(get_colors_not_above_threshold(3, 10))
 
     # relative_freq = get_freqs()
     # show(relative_freq, '1990-1995')
