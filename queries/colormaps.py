@@ -25,14 +25,13 @@ book_lengths = {}
 
 
 # stores lengths of each sentence for every book in in book_ids
-# format key: book id, value: a list with index i stores the length of sentence
-# i in book
+# format key: book id, value: {sentence_id: length}
 sentences = {}
 
 
 # get sentence lengths
 for id in book_ids:
-    sentences[id] = []
+    sentences[id] = {}
     mentions[id] = []
     c.execute("""SELECT index_in_book, length FROM sentence where book=?""", [id])
     for row in c.fetchall():
@@ -40,6 +39,13 @@ for id in book_ids:
 
     book_lengths[id] = sum(sentences[id])
 
+
+# index of last word before sentence containing mention
+def get_index_mention(book, sentence):
+    result = 0
+    for i in range(sentence - 1):
+        result += sentences[book][i]
+    return 0
 
 # populate mentions dict
 query = """SELECT sentence.index_in_book, color.name, color.base, book.id, mention.index_in_sent
@@ -49,11 +55,15 @@ book.id IN (4032, 4637)"""
 c.execute(query)
 for row in c.fetchall():
     sentence_index = row[0]
-    mention_index = row[5]
+    mention_index = row[4] # in sentence
     color_name = row[1]
     color_base = row[2]
-    book_id = row[4]
-    mentions[book_id].append((color_name, color_base, sum(sentences[book_id][:sentence_index] + mention_index)))
+    book_id = row[3]
+
+    mention_index_in_book = get_index_mention(book_id, sentence_index)
+    
+    mentions[book_id].append((color_name, color_base,
+                              mention_index_in_book + mention_index))
     
 
 
