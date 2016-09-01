@@ -1,103 +1,103 @@
-brown brown
-brick red
-pearl white
-purple purple
-gold yellow
-black black
-golden yellow
-dapple-gray gray
-gray gray
-iron-gray gray
-red red
-white white
-rose pink
-chestnut brown
-pink pink
-ill-colored NULL
-silver gray
-high-colored NULL
-greenish green
-yellow yellow
-blue blue
-blue-green blue
-silver-gray gray
-coral red
-shadow gray
-purplish purple
-flaxen yellow
-gray-brown brown
-green green
-redden red
-dead-white white
-violet purple
-pearly white
-dove-colored white
-maroon red
-mahogany brown
-copper brown
-dun gray
-hazel green
-blue-gray gray
-rosy red
-whiten white
-livid blue
-honey yellow
-woolen-white white
-lavender purple
-brownish brown
-fresh-colored NULL
-blacken black
-cherry-colored red
-buff-colored NULL
-silvery white
-cream white
-crimson red
-honey-colored yellow
-jade green
-gilt yellow
-coal-black black
-ivory white
-ebony black
-scarlet red
-rose-red red
-rose-white white
-fiery-colored NULL
-gilded yellow
-olive-colored green
-vermilion red
-bronze brown
-olive green
-cream-colored white
-apricot-colored orange
-straw-colored yellow
-ginger red
-magenta purple
-agate brown
-brightly-colored NULL
-cinnamon red
-rose-colored red
-jade-green green
-iris purple
-opal white
-nacre-colored gray
-sulphur-yellow yellow
-sanguine red
-mauve purple
-pearl-colored white
-orchid purple
-copper-green green
-olive-green green
-milky white
-pistachio-colored green
-rose-pink pink
-wine-yellow yellow
-flame-red red
-orange orange
-ruby red
-emerald green
-turquoise blue
-red-gold yellow
-crocus-colored purple
+brown brown A52A2A
+brick red cb4154
+pearl white eae0c8
+purple purple 800080
+gold yellow FFD700
+black black 000000
+golden yellow FFD700
+dapple-gray gray acb4af
+gray gray 808080
+iron-gray gray 434b4d
+red red FF0000
+white white FFFFFF
+rose pink FF007F
+chestnut brown 954535
+pink pink FFC0CB
+ill-colored NULL NULL
+silver gray C0C0C0
+high-colored NULL NULL
+greenish green 008000
+yellow yellow FFFF00
+blue blue 0000FF
+blue-green blue 21B6A8
+silver-gray gray 808080
+coral red FF7F50
+shadow gray 808080
+purplish purple 800080
+flaxen yellow f9da7f
+gray-brown brown A52A2A
+green green 008000
+redden red FF0000
+dead-white white FFFFFF
+violet purple EE82EE
+pearly white eae0c8
+dove-colored white FFFFFF
+maroon red 800000
+mahogany brown 670A0A
+copper brown b87333
+dun gray DAC8AE
+hazel green 594c26
+blue-gray gray 6699cc
+rosy red FF0000
+whiten white FFFFFF
+livid blue 6699cc
+honey yellow FDD378
+woolen-white white E8E8E8
+lavender purple E6E6FA
+brownish brown A52A2A
+fresh-colored NULL NULL
+blacken black 000000
+cherry-colored red C40000
+buff-colored NULL NULL
+silvery white FFFFFF
+cream white FCFBE3
+crimson red DC143C
+honey-colored yellow FDD378
+jade green 00a86b
+gilt yellow e3c84c
+coal-black black 000000
+ivory white fffff0
+ebony black 555d50
+scarlet red ff2400
+rose-red red C21E56
+rose-white white FFFEFE
+fiery-colored NULL NULL
+gilded yellow f0e682
+olive-colored bab86c
+vermilion red e34234
+bronze brown cd7f32
+olive green bab86c
+cream-colored white FCFBE3
+apricot-colored orange FBCEB1
+straw-colored yellow D6BF86
+ginger red B06500
+magenta purple ff00ff
+agate brown ccc7bc
+brightly-colored NULL NULL
+cinnamon red D2691E
+rose-colored red FF007F
+jade-green green 00a86b
+iris purple 5A4FCF
+opal white AAC4C4
+nacre-colored gray fbf4e2
+sulphur-yellow yellow edff21
+sanguine red 850505
+mauve purple b784a7
+pearl-colored white eae0c8
+orchid purple da70d6
+copper-green green 008000
+olive-green green bab86c
+milky white DCD9CD
+pistachio-colored green 93c572
+rose-pink pink FF66CC
+wine-yellow yellow ffff00
+flame-red red af2b1e
+orange orange ffa500
+ruby red E0115F
+emerald green 50c878
+turquoise blue 00e5ee
+red-gold yellow ffff00
+crocus-colored purple 9b81ba
 tawny brown
 amber-colored yellow
 amber yellow
