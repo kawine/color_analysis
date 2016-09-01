@@ -115,7 +115,6 @@ bhie-gray
 bi-colored
 bilious-colored
 bilious-yellow
-bird-lime
 bistre-brown
 bistre-colored
 bkie-gray
@@ -387,7 +386,6 @@ cinnamon-brown
 cinnamon-colored
 citron-colored
 citron-green
-ckiret-colored
 claret
 claret-color
 claret-colored

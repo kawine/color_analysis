@@ -198,13 +198,15 @@ if __name__ == '__main__':
     c = conn.cursor()
     # relative_freq = get_freqs()
 
-    # print(relative_freq)
-    # show(relative_freq, '1990-1995')
-    freq_data = get_frequent_colors(0.8, 10)
+    data = get_frequent_colors(90, 10)
 
-    # get_freqs_over_period(10, 0.8, "freq_10yr_80percent.csv")
-    get_colors_above_threshold(0.8, 10, freq_data, "colors_always_above_threshold_10yr_80per.csv")
-# get_colors_not_above_threshold(0.8, 10, freq_data, "colors_sometimes_below_threshold_10yr_80per.csv")
+    #relative_freq = get_freqs()
+
+    #print(relative_freq)
+    #show(relative_freq, '1990-1995')
+##
+##    print(get_colors_above_threshold(3, 10))
+##    print(get_colors_not_above_threshold(3, 10))
 
     # relative_freq = get_freqs()
     # show(relative_freq, '1990-1995')
