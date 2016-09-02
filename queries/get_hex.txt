@@ -98,99 +98,99 @@ emerald green 50c878
 turquoise blue 00e5ee
 red-gold yellow ffff00
 crocus-colored purple 9b81ba
-tawny brown
-amber-colored yellow
-amber yellow
-citron-green green
-turquoise-blue blue
-beryl green
-platinum white
-ochre-colored orange
-bone white
-charcoal gray
-peach-colored orange
-strawberry red
-dull-green green
-apricot orange
-cherry red
-rich-brown brown
-water-colored blue
-bright-colored NULL
-light-colored NULL
-whitish-brown brown
-ruddy red
-snow-white white
-green-baize green
-bluish blue
-lime green
-whitish white
-yellowish yellow
-cream-color white
-primrose-colored yellow
-blackened-green green
-whitey-brown brown
-wheat yellow
-murrey-colored red
-arial-gray gray
-russet red
-Lead-colored gray
-blacker black
-eel-brown brown
-reddish red
-puce purple
-plum purple
-blood-red red
-many-colored NULL
-whiter white
-custard-colored yellow
-auburn brown
-lead-color gray
-lead-colored gray
-rose-color red
-canary-colored yellow
-coffee-colored brown
-oakum-colored gray
-browner brown
-rusty-black black
-copper-colored brown
-rust red
-yellow-green green
-red-brick brick
-bluer blue
-damaged-orange orange
-rubicund red
-sky-blue blue
-jet black
-canary yellow
-red-brown brown
-greenest green
-rouge red
-tan brown
-jet-black black
-mulberry-colored black
-grayer gray
-lavender-colored purple
-lemon yellow
-nut-brown brown
-reddish-gray gray
-topaz yellow
-whity-brown brown
-mouse-colored gray
-village-green green
-roseate red
-milk-white white
-whitest white
-amethyst purple
-redder red
-marble-white white
-blackest black
-blue-black black
-navy blue
-lilac purple
-tender-colored NULL
-gray-blue blue
-glass-green green
-alabaster white
-gaily-colored NULL
-richest-colored NULL
-gold-colored yellow
+tawny brown CC6600
+amber-colored yellow FFBE00
+amber yellow FFBE00
+citron-green green 8FB31D
+turquoise-blue blue 00E5EE
+beryl green D6E3B5
+platinum white E5E4E2
+ochre-colored orange CC7722
+bone white E1D4C0
+charcoal gray 36454F
+peach-colored orange FFCC99
+strawberry red DE0914
+dull-green green 4D994D
+apricot orange FBCEB1
+cherry red C40000
+rich-brown brown 321A18
+water-colored blue E0EAF4
+bright-colored NULL NULL
+light-colored NULL NULL
+whitish-brown brown A05738
+ruddy red FF0028
+snow-white white FFFAFA
+green-baize green C5D0A8
+bluish blue 0000FF
+lime green 99FF00
+whitish white FFFFFF
+yellowish yellow FFFF00
+cream-color white  FFFFCC
+primrose-colored yellow E6E99D
+blackened-green green 002000
+whitey-brown brown FAEBD7
+wheat yellow F5DEB3
+murrey-colored red 9A3B5D
+arial-gray gray D3D3D3
+russet red 80461B
+Lead-colored gray 6D6A65
+blacker black 000000
+eel-brown brown 654321
+reddish red FF00000
+puce purple CC8899
+plum purple 8E4585
+blood-red red 8A0707
+many-colored NULL NULL
+whiter white FFFFFF
+custard-colored yellow FFF5C9
+auburn brown A52A2A
+lead-color gray 6D6A65
+lead-colored gray 6D6A65
+rose-color red FFE4E1
+canary-colored yellow FFEF00
+coffee-colored brown 593C1F
+oakum-colored gray DDDAE1
+browner brown F4A460
+rusty-black black 000000
+copper-colored brown B87333
+rust red B7410E
+yellow-green green ADFF2F
+red-brick brick 841F27
+bluer blue 0000FF
+damaged-orange orange FFA500
+rubicund red FF8B74
+sky-blue blue 7EC0EE
+jet black 000000
+canary yellow FFEF00
+red-brown brown CB4154
+greenest green 00FF00
+rouge red FF0000
+tan brown D2B48C
+jet-black black 000000
+mulberry-colored black 2A0A1f
+grayer gray D3D3D3
+lavender-colored purple B378D3
+lemon yellow FFF44F
+nut-brown brown 84683C
+reddish-gray gray A49494
+topaz yellow FFC87C
+whity-brown brown FAEBD7
+mouse-colored gray 808080
+village-green green 6E7E64
+roseate red F9E6DC
+milk-white white DCD9CD
+whitest white FFFFFF
+amethyst purple 9966CC
+redder red FF0000
+marble-white white EDECEE
+blackest black  000000
+blue-black black 003366
+navy blue 000080
+lilac purple C8A2C8
+tender-colored NULL NULL
+gray-blue blue 778899
+glass-green green 03BE73
+alabaster white F9F9F9
+gaily-colored NULL NULL
+richest-colored NULL NULL
+gold-colored yellow FFD700
