@@ -63,7 +63,7 @@ rose-red red C21E56
 rose-white white FFFEFE
 fiery-colored NULL NULL
 gilded yellow f0e682
-olive-colored bab86c
+olive-colored green bab86c
 vermilion red e34234
 bronze brown cd7f32
 olive green bab86c
@@ -183,7 +183,7 @@ whitest white FFFFFF
 amethyst purple 9966CC
 redder red FF0000
 marble-white white EDECEE
-blackest black  000000
+blackest black 000000
 blue-black black 003366
 navy blue 000080
 lilac purple C8A2C8
