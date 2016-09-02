@@ -125,7 +125,7 @@ bluish blue 0000FF
 lime green 99FF00
 whitish white FFFFFF
 yellowish yellow FFFF00
-cream-color white  FFFFCC
+cream-color white FFFFCC
 primrose-colored yellow E6E99D
 blackened-green green 002000
 whitey-brown brown FAEBD7
@@ -136,7 +136,7 @@ russet red 80461B
 Lead-colored gray 6D6A65
 blacker black 000000
 eel-brown brown 654321
-reddish red FF00000
+reddish red FF0000
 puce purple CC8899
 plum purple 8E4585
 blood-red red 8A0707

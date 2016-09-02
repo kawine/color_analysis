@@ -15,7 +15,7 @@ c = conn.cursor()
 ##
 ##f.close()
 
-book_ids = [4032,4637]
+book_ids = [3759, 3694,5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410]
 # stores all color mentions for each book with id in book_ids
 # format key: book id, value: (color name, color base, index of mention)
 mentions = {}
@@ -54,13 +54,13 @@ def get_index_mention(book, sentence):
     result = 0
     for i in range(sentence - 1):
         result += sentences[book][i]
-    return 0
+    return result
 
 # populate mentions dict
 query = """SELECT sentence.index_in_book, color.name, color.base, book.id, mention.index_in_sent
 FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND
 mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND
-book.id IN (4032, 4637)"""
+book.id IN (3759, 3694,5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410)"""
 c.execute(query)
 for row in c.fetchall():
     sentence_index = row[0]
@@ -70,40 +70,45 @@ for row in c.fetchall():
     book_id = row[3]
 
     mention_index_in_book = get_index_mention(book_id, sentence_index)
-    
+
     mentions[book_id].append((color_name, color_base,
                               mention_index_in_book + mention_index, hex_codes[color_name]))
-    
 
-# dynamic time warping
-def d(a, b):
-    return math.abs(a[0] - b[0]) * math.abs(a[1] - b[1])    
+target1 = open('mentions.txt', 'a')
+target1.write(str(mentions))
 
-def dtw_distance(s, t):
-    DTW = [[0 for x in s], [0 for x in t]]
-    for i in range(len(s)):
-        DTW[i][0] = math.inf
-    for i in range(len(t)):
-        DTW[0][i] = math.inf
+target2 = open('book_length.txt', 'a')
+target2.write(str(book_lengths))
 
-    DTW[0][0] = 0
-
-    for i in range(len(s)):
-        for j in range(len(t)):
-            cost = d(s[i], t[j])
-            DTW[i][j] = cost + min(min(DTW[i-1][j], DTW[i][j-1]), DTW[i - 1][j -1])
-
-    return DTW[len(s) - 1][len(t) - 1]
-
-
-matrix = [[0 for x in mentions], [0 for x in mentions]]
-
-for i in range(len(mentions)):
-    for j in range(len(mentions)):
-        matrix[i][j] = dtw_distance(mentions[i], mentions[j])
-
-
-options = []
+# # dynamic time warping
+# def d(a, b):
+#     return math.abs(a[0] - b[0]) * math.abs(a[1] - b[1])
+#
+# def dtw_distance(s, t):
+#     DTW = [[0 for x in s], [0 for x in t]]
+#     for i in range(len(s)):
+#         DTW[i][0] = math.inf
+#     for i in range(len(t)):
+#         DTW[0][i] = math.inf
+#
+#     DTW[0][0] = 0
+#
+#     for i in range(len(s)):
+#         for j in range(len(t)):
+#             cost = d(s[i], t[j])
+#             DTW[i][j] = cost + min(min(DTW[i-1][j], DTW[i][j-1]), DTW[i - 1][j -1])
+#
+#     return DTW[len(s) - 1][len(t) - 1]
+#
+#
+# matrix = [[0 for x in mentions], [0 for x in mentions]]
+#
+# for i in range(len(mentions)):
+#     for j in range(len(mentions)):
+#         matrix[i][j] = dtw_distance(mentions[i], mentions[j])
+#
+#
+# options = []
 
 
 
