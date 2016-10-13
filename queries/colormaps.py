@@ -29,13 +29,13 @@ book_lengths = {}
 sentences = {}
 
 # hex codes
-hex_codes = {}
-for color in open('get_hex.txt', 'r'):
-    color = color.split(' ')
-    print(color)
-    hex_codes[color[0]] = color[2].strip('\n').upper()
-
-print(hex_codes)
+# hex_codes = {}
+# for color in open('get_hex.txt', 'r'):
+#     color = color.split(' ')
+#     print(color)
+#     hex_codes[color[0]] = color[2].strip('\n').upper()
+#
+# print(hex_codes)
 
 
 # get sentence lengths
@@ -46,38 +46,39 @@ for id in book_ids:
     for row in c.fetchall():
         sentences[id][row[0]] = row[1]
 
-    book_lengths[id] = sum(sentences[id])
+for book_id in sentences.keys():
+    book_lengths[book_id] = sum([sentences[book_id][sentence] for sentence in sentences[book_id].keys()])
 
+#
+# # index of last word before sentence containing mention
+# def get_index_mention(book, sentence):
+#     result = 0
+#     for i in range(sentence - 1):
+#         result += sentences[book][i]
+#     return result
+#
+# # populate mentions dict
+# query = """SELECT sentence.index_in_book, color.name, color.base, book.id, mention.index_in_sent
+# FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND
+# mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND
+# book.id IN (3759, 3694,5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410)"""
+# c.execute(query)
+# for row in c.fetchall():
+#     sentence_index = row[0]
+#     mention_index = row[4] # in sentence
+#     color_name = row[1]
+#     color_base = row[2]
+#     book_id = row[3]
+#
+#     mention_index_in_book = get_index_mention(book_id, sentence_index)
+#
+#     mentions[book_id].append((color_name, color_base,
+#                               mention_index_in_book + mention_index, hex_codes[color_name]))
+#
+# target1 = open('mentions.txt', 'a')
+# target1.write(str(mentions))
 
-# index of last word before sentence containing mention
-def get_index_mention(book, sentence):
-    result = 0
-    for i in range(sentence - 1):
-        result += sentences[book][i]
-    return result
-
-# populate mentions dict
-query = """SELECT sentence.index_in_book, color.name, color.base, book.id, mention.index_in_sent
-FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND
-mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND
-book.id IN (3759, 3694,5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410)"""
-c.execute(query)
-for row in c.fetchall():
-    sentence_index = row[0]
-    mention_index = row[4] # in sentence
-    color_name = row[1]
-    color_base = row[2]
-    book_id = row[3]
-
-    mention_index_in_book = get_index_mention(book_id, sentence_index)
-
-    mentions[book_id].append((color_name, color_base,
-                              mention_index_in_book + mention_index, hex_codes[color_name]))
-
-target1 = open('mentions.txt', 'a')
-target1.write(str(mentions))
-
-target2 = open('book_length.txt', 'a')
+target2 = open('book_lengths.txt', 'a')
 target2.write(str(book_lengths))
 
 # # dynamic time warping
