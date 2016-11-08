@@ -198,7 +198,7 @@ if __name__ == '__main__':
     c = conn.cursor()
     # relative_freq = get_freqs()
 
-    data = get_frequent_colors(90, 10)
+    data = get_frequent_colors(80, 10)
 
     #relative_freq = get_freqs()
 
