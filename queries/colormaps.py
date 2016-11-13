@@ -18,7 +18,7 @@ c = conn.cursor()
 ##
 ##f.close()
 
-book_ids = [3759, 3694,5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410]
+book_ids = [3759, 3694, 5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410]
 # stores all color mentions for each book with id in book_ids
 # format key: book id, value: (color name, color base, index of mention)
 mentions = {}
@@ -59,7 +59,7 @@ def get_index_mention(book, sentence):
 query = """SELECT sentence.index_in_book, color.name, color.base, book.id, mention.index_in_sent
 FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND
 mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND
-book.id IN (3759, 3694,5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410)"""
+book.id IN (3759, 3694, 5727, 4032, 4637, 2743, 5866, 1032, 5155, 2410)"""
 c.execute(query)
 for row in c.fetchall():
     sentence_index = row[0]
@@ -69,21 +69,22 @@ for row in c.fetchall():
     book_id = row[3]
 
     if hex_codes[color_name] != 'NULL':
+        #print(color_name)
+        #print(hex_codes[color_name])
+        lab0 = spectra.html(hex_codes[color_name]).to('lab').values
+        lab0 = LabColor(lab_l=lab0[0], lab_a=lab0[1], lab_b=lab0[2])
+        
         mention_index_in_book = get_index_mention(book_id, sentence_index)
         
         mentions[book_id].append((color_name, color_base,
-                                  mention_index_in_book + mention_index, hex_codes[color_name]))
+                                  mention_index_in_book + mention_index, lab0, hex_codes[color_name]))
     
-
 # dynamic time warping
-def d(a, b):
-    lab0 = spectra.html(a[3]).to('lab').values
-    lab1 = spectra.html(a[3]).to('lab').values
-
-    lab0 = LabColor(lab_l=lab0[0], lab_a=lab0[1], lab_b=lab0[2])
-    lab1 = LabColor(lab_l=lab1[0], lab_a=lab1[1], lab_b=lab1[2])
-    
-    return abs(a[2] - b[2]) * delta_e_cie2000(lab0, lab1)   
+def d(a, b):    
+    val = abs(a[2] - b[2]) * delta_e_cie2000(a[3], b[3])
+ #   val = abs(a[2] - b[2]) * abs(int(a[4], 16) - int(b[4], 16))
+    #print(val)
+    return val
 
 def dtw_distance(s, t):
     DTW = []
