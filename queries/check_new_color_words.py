@@ -20,7 +20,7 @@ def query(query, options, c, filename):
     return res
 
 
-def parse_color_list():
+def parse_color_list2():
     res = []
     with open('../extended_colors.csv', 'r') as f:
         for row in f:
@@ -33,7 +33,7 @@ def filter_noncolors(c):
     all_colors = query("""SELECT name, id FROM color WHERE modifier=''""", '', c, '')
     all_colors = c.fetchall()
 
-    manually_set_colors = parse_color_list()[1:]
+    manually_set_colors = parse_color_list2()[1:]
 
     for row in all_colors:
        
@@ -120,7 +120,7 @@ def fix_conditionals(c, filename):
                      if (split_name[0] + ' ' + split_name[1]) in row2[2]:
                             c.execute("""SELECT name, id FROM color WHERE name like ? AND modifier like ?""", [row[3], row2[1]])
                             new_color_id = c.fetchone()
-                            print(row[1] + " " + new_color_id[0])
+                            #print(row[1] + " " + new_color_id[0])
                             c.execute("""UPDATE mention SET color=? WHERE id=?""", [new_color_id[1], row2[0]])
 
                                  
@@ -161,16 +161,16 @@ if __name__ == '__main__':
     conn = sqlite3.connect('../color_analysis_merged.db')
     c = conn.cursor()
     
-    color_list = parse_color_list('../extended_colors.csv');
-
-    remove_n_words(c, '../christina.csv');
-    fix_typos(c, '../christina.csv', color_list);
-    get_empty_col(c)
-    fix_conditionals(c, '../christina.csv')
-    add_base(c, '../empty_cols2.csv')
-
- #   remove_modifier(c)
- #   filter_noncolors(c)
+##    color_list = parse_color_list('../extended_colors.csv');
+##
+##    remove_n_words(c, '../christina.csv');
+##    fix_typos(c, '../christina.csv', color_list);
+##    get_empty_col(c)
+##    fix_conditionals(c, '../christina.csv')
+##    add_base(c, '../empty_cols2.csv')
+##
+##    remove_modifier(c)
+    filter_noncolors(c)
 
     # uncomment to save DB updates
     conn.commit()
