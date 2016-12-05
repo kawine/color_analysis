@@ -33,7 +33,7 @@ sentences = {}
 
 # hex codes
 hex_codes = {}
-for color in open('get_hex.txt', 'r'):
+for color in open('../get_hex.txt', 'r'):
     color = color.split(' ')
     hex_codes[color[0]] = color[2].strip('\n').upper()
 

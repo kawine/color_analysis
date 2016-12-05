@@ -34,6 +34,8 @@ def parse_color_dict():
                            '35-45':0,
                            '65-85':0,
                            '85':0}
+
+    f.close()
     return res
 
 
