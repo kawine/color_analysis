@@ -16,28 +16,28 @@ def parse_color_list():
 # modify the query
 def color_count(color_list):
     res = {}
-##    query = """
-##    SELECT color.name, color.id, color.base, count(*)
-##    FROM color, mention
-##    WHERE color.id == mention.color
-##    GROUP BY color.name, color.id, color.base
-##    """
-
     query = """
-    SELECT color.name, color.id, color.base, count(*)
-    FROM color, mention, clause, sentence, book
-    WHERE book.year >= 1820 and mention.color=color.id AND mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id
-    GROUP BY color.name, color.id, color.base
+    SELECT color.name, color.base, count(*)
+    FROM color, mention
+    WHERE color.id == mention.color
+    GROUP BY color.name, color.base
     """
+
+##    query = """
+##    SELECT color.name, color.base, count(*)
+##    FROM color, mention, clause, sentence, book
+##    WHERE book.year >= 1820 and mention.color=color.id AND mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id
+##    GROUP BY color.name, color.base
+##    """
 
 
     c.execute(query)
 
     for row in c.fetchall():
         color_name = row[0]
-        color_id = row[1]
-        color_base = row[2]
-        count = row[3]
+ #       color_id = row[1]
+        color_base = row[1]
+        count = row[2]
 
         if color_base in color_list:
             res[color_name] = count
