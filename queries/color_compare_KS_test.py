@@ -20,13 +20,17 @@ def count_color_appearance_in_sentence_lengths(res, color_list, start, end):
 
         if base in color_list:
             if color_name not in res:
-                res[color_name] = {'0_5':0,
-                           '5_15':0,
-                           '15_25':0,
-                           '25_35':0,
-                           '35-45':0,
-                           '65-85':0,
-                           '85':0}
+                res[color_name] = {
+                           '1800_1810':0,
+                           '1810_1820':0,
+                           '1820_1830':0,
+                           '1830_1840':0,
+                           '1850_1860':0,
+                           '1860_1870':0,
+                           '1870_1880':0,
+                           '1880_1890':0,
+                           '1890_1900':0
+                           }
                         
             res[color_name][str(start) + '_' + str(end)] = count
 
@@ -49,17 +53,18 @@ color_list = parse_color_list();
 res = {}
 
 # get counts
-count_color_appearance_in_sentence_lengths(res, color_list, 0, 5)
-count_color_appearance_in_sentence_lengths(res, color_list, 5, 15)
-count_color_appearance_in_sentence_lengths(res, color_list, 15, 25)
-count_color_appearance_in_sentence_lengths(res, color_list, 25, 35)
-count_color_appearance_in_sentence_lengths(res, color_list, 35, 45)
-count_color_appearance_in_sentence_lengths(res, color_list, 45, 65)
-count_color_appearance_in_sentence_lengths(res, color_list, 65, 85)
-count_color_appearance_in_sentence_lengths(res, color_list, 85, None)
+count_color_appearance_in_sentence_lengths(res, color_list, 1800, 1810)
+count_color_appearance_in_sentence_lengths(res, color_list, 1810, 1820)
+count_color_appearance_in_sentence_lengths(res, color_list, 1830, 1840)
+count_color_appearance_in_sentence_lengths(res, color_list, 1840, 1850)
+count_color_appearance_in_sentence_lengths(res, color_list, 1850, 1860)
+count_color_appearance_in_sentence_lengths(res, color_list, 1860, 1870)
+count_color_appearance_in_sentence_lengths(res, color_list, 1870, 1880)
+count_color_appearance_in_sentence_lengths(res, color_list, 1880, 1890)
+count_color_appearance_in_sentence_lengths(res, color_list, 1890, 1900)
 
 # write to file
-f = open('../color_count_in_various_ranges_of_sentence_length.txt', 'w');
+f = open('../color_count_per_decade.txt', 'w');
 
 for color in res:
     s = color
