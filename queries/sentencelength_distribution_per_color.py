@@ -4,53 +4,59 @@ c = conn.cursor()
 
 
 # make end = None if no upper limit
-def count_color_appearance_in_sentence_lengths(res, start, end):
+def count_color_appearance_in_sentence_lengths(res, color_list, start, end):
     if end == None:
-        query = """SELECT color.name, color.id, count(*) FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND book.id and sentence.length >=""" + str(start) + """ GROUP BY color.name, color.id"""
+        query = """SELECT color.name, color.id, color.base, count(*) FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND book.id and sentence.length >=""" + str(start) + """ GROUP BY color.name, color.id"""
     else:
-        query = """SELECT color.name, color.id, count(*) FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND book.id and sentence.length >=""" + str(start) + """ AND sentence.length <""" + str(end) + """ GROUP BY color.name, color.id"""
+        query = """SELECT color.name, color.id, color.base, count(*) FROM color, mention, sentence, clause, book WHERE mention.color=color.id AND mention.clause=clause.id AND clause.sentence=sentence.id AND sentence.book=book.id AND book.id and sentence.length >=""" + str(start) + """ AND sentence.length <""" + str(end) + """ GROUP BY color.name, color.id"""
 
     c.execute(query)
 
     for row in c.fetchall():
         color_name = row[0]
         color_id = row[1]
-        count = row[2]
+        base = row[2]
+        count = row[3]
 
-        if color_name in res:
-            res[color_name][str(start) + '_' + str(end)] = count
-            
-
-# create empty result dictionary
-def parse_color_dict():
-    res = {}
-    with open('../color_list.csv', 'r') as f:
-        for row in f:
-            row = row.split(',')
-            res[row[0]] = {'0_5':0,
+        if base in color_list:
+            if color_name not in res:
+                res[color_name] = {'0_5':0,
                            '5_15':0,
                            '15_25':0,
                            '25_35':0,
                            '35-45':0,
                            '65-85':0,
                            '85':0}
+                        
+            res[color_name][str(start) + '_' + str(end)] = count
+
+            
+# get list of valid base colors
+def parse_color_list():
+    res = []
+    with open('../color_list.csv', 'r') as f:
+        for row in f:
+            row = row.split(',')
+            res.append(row[0]) 
 
     f.close()
     return res
 
 
 # build and empty result dictionary
-res = parse_color_dict()
+color_list = parse_color_list();
+
+res = {}
 
 # get counts
-count_color_appearance_in_sentence_lengths(res, 0, 5)
-count_color_appearance_in_sentence_lengths(res, 5, 15)
-count_color_appearance_in_sentence_lengths(res, 15, 25)
-count_color_appearance_in_sentence_lengths(res, 25, 35)
-count_color_appearance_in_sentence_lengths(res, 35, 45)
-count_color_appearance_in_sentence_lengths(res, 45, 65)
-count_color_appearance_in_sentence_lengths(res, 65, 85)
-count_color_appearance_in_sentence_lengths(res, 85, None)
+count_color_appearance_in_sentence_lengths(res, color_list, 0, 5)
+count_color_appearance_in_sentence_lengths(res, color_list, 5, 15)
+count_color_appearance_in_sentence_lengths(res, color_list, 15, 25)
+count_color_appearance_in_sentence_lengths(res, color_list, 25, 35)
+count_color_appearance_in_sentence_lengths(res, color_list, 35, 45)
+count_color_appearance_in_sentence_lengths(res, color_list, 45, 65)
+count_color_appearance_in_sentence_lengths(res, color_list, 65, 85)
+count_color_appearance_in_sentence_lengths(res, color_list, 85, None)
 
 # write to file
 f = open('../color_count_in_various_ranges_of_sentence_length.txt', 'w');
